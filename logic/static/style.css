@@ -24,8 +24,6 @@ div#content {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    /*padding: 10px;*/
-    /*margin-top: 10%;*/
 }
 
 form#expression-form input {
