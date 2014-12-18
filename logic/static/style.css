@@ -24,7 +24,7 @@ div#content {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    padding: 10px;
+    /*padding: 10px;*/
     /*margin-top: 10%;*/
 }
 
@@ -116,4 +116,10 @@ div.node-child {
 
 div.error {
     color: #FF523B;
+}
+
+@media (max-width: 640px) {
+    a.forkme {
+        display: none;
+    }
 }
