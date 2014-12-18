@@ -95,7 +95,8 @@ class ExpressionTree(object):
         self._parse()
 
     def add_var(self, varname):
-        self.variables.append(varname)
+        if varname not in self.variables:
+            self.variables.append(varname)
         if len(self.variables) > self.max_vars:
             raise Exception("Number of variables cannot exceed %d" % self.max_vars)
 
