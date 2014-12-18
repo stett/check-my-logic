@@ -1,0 +1,14 @@
+<div class="node">
+    <div class="node-name">
+        {{ node.name }}
+    </div>
+    <div class="node-children">
+        {% for child in node.children %}
+        {% with child as node %}
+        <div class="node-child">
+            {% include 'node.html' %}
+        </div>
+        {% endwith %}
+        {% endfor %}
+    </div>
+</div>

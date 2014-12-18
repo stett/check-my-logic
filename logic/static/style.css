@@ -1,0 +1,98 @@
+html, body {
+    min-height: 100%;
+    font-size: 10pt;
+}
+
+div#content {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    margin-top: 10%;
+}
+
+form#expression-form input {
+    display: inline;
+    border: none;
+    box-shadow: 0 0 1px black;
+}
+
+form#expression-form input[type="text"] {
+    width: 70%;
+}
+
+form#expression-form input[type="submit"] {
+    width: 30%;
+}
+
+div#results {
+    margin-top: 20px;
+}
+
+div.result-block {
+    position: relative;
+}
+
+div.result-block-title {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 3px 4px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 0;
+    margin-top: -1px;
+    z-index: 0;
+}
+
+div.result-block-body {
+    position: relative;
+    border: 1px solid #ddd;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    padding: 1px 4px;
+    width: 97%;
+    max-height: 500px;
+    margin: 0 auto;
+    margin-top: -1px;
+    z-index: 1;
+    overflow: auto;
+}
+
+div.result-block.last div.result-block-body {
+    border-bottom: 1px solid #ddd;
+}
+
+td, th {
+    padding: 0 3px;
+    min-width: 20px;
+    text-align: center;
+}
+
+div.tree {
+    text-align: center;
+}
+
+div.node {
+    display: inline-block;
+    text-align: left;
+}
+
+div.node-name {
+    padding: 2px;
+    margin-top: 2px;
+    min-width: 16px;
+    min-height: 16px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+}
+
+div.node-children {
+    margin-left: 10px;
+    border-left: 1px solid #ddd;
+}
+
+div.node-child {
+    padding-left: 5px;
+}

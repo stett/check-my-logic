@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Check My Logic
+{% endblock %}
+
+{% block content %}
+<form id="expression-form" method="get">
+    <input type="text" name="expression" value="{{ expression }}" /><input type="submit" value="Analyze" />
+</form>
+
+{% if expression %}
+<div id="results">
+    <div class="result-block">
+        <div class="result-block-title">
+            Is It Tautological?
+        </div>
+
+        <div class="result-block-body">
+            {% if tautology %}
+            Yep! :D
+            {% else %}
+            Nope. :\
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="result-block">
+        <div class="result-block-title">
+            Truth Table
+        </div>
+
+        <div class="result-block-body">
+            <table>
+                <thead>
+                    <tr>
+                        {% for col in truth_table.0 %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for row in truth_table %}
+                    {% if not forloop.first %}
+                    <tr>
+                        {% for col in row %}
+                        <td>{{ col|yesno:"1,0" }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="result-block last">
+        <div class="result-block-title">
+            Expression Tree
+        </div>
+
+        <div class="result-block-body tree">
+            {% with tree.root as node %}
+            {% include 'node.html' %}
+            {% endwith %}
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
