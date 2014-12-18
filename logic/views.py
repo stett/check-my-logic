@@ -7,13 +7,18 @@ def home(request):
     context = {}
     expression = request.GET.get('expression', None)
     if expression:
-        tree = ExpressionTree(expression)
-        context.update({
-            'original': tree.expression,
-            'expression': tree.stringify(),
-            'tautology': tree.is_tautology(),
-            'truth_table': tree.get_truth_table(),
-            'tree': tree,
-        })
+        context.update({'original': expression})
+        try:
+            tree = ExpressionTree(expression)
+            context.update({
+                'expression': tree.stringify(),
+                'tautology': tree.is_tautology(),
+                'truth_table': tree.get_truth_table(),
+                'tree': tree,
+            })
+        except Exception as e:
+            context.update({
+                'error': e
+            })
 
     return render(request, 'home.html', context)

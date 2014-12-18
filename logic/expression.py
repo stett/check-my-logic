@@ -87,14 +87,17 @@ def _clean_expression(expression):
 
 
 class ExpressionTree(object):
-    def __init__(self, expression):
+    def __init__(self, expression, max_vars=10):
         self.expression = _clean_expression(expression)
         self.variables = []
         self.root = None
+        self.max_vars = max_vars
         self._parse()
 
     def add_var(self, varname):
         self.variables.append(varname)
+        if len(self.variables) > self.max_vars:
+            raise Exception("Number of variables cannot exceed %d" % self.max_vars)
 
     def _parse(self):
         expression = copy.copy(self.expression)
@@ -174,7 +177,7 @@ class ExpressionTree(object):
             if match:
                 bracket = match.group('bracket')
                 if not node:
-                    raise Exception("Expression cannot start with a close-bracket")
+                    raise Exception("Expression cannot start with a close-bracket.")
                 if len(parents) > 0:
                     parent = parents.pop()
                     parent.children.append(node)
@@ -186,7 +189,13 @@ class ExpressionTree(object):
                 continue
 
             # If we encountered an unrecognized expression...
-            raise Exception("Unrecognized symbol in expression! \"%s\"" % expression)
+            raise Exception(
+                "Unrecognized symbol in expression! \"%s\"" % expression)
+
+        # If a binary operator was left hanging...
+        if isinstance(node, BinaryOperatorNode) and len(node.children) < 2:
+            raise Exception(
+                "Binary operator \"%s\" did not have two operands." % node.name)
 
         # Save the root node
         while node.parent:

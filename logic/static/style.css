@@ -3,12 +3,29 @@ html, body {
     font-size: 10pt;
 }
 
+h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    /*font-size: 3em;*/
+    text-transform: uppercase;
+    /*text-align: center;*/
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #3BB4FF;
+}
+
 div#content {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
     padding: 10px;
-    margin-top: 10%;
+    /*margin-top: 10%;*/
 }
 
 form#expression-form input {
@@ -50,7 +67,7 @@ div.result-block-body {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     padding: 1px 4px;
-    width: 97%;
+    width: 95%;
     max-height: 500px;
     margin: 0 auto;
     margin-top: -1px;
@@ -95,4 +112,8 @@ div.node-children {
 
 div.node-child {
     padding-left: 5px;
+}
+
+div.error {
+    color: #FF523B;
 }

@@ -5,12 +5,16 @@ Check My Logic
 {% endblock %}
 
 {% block content %}
+
+<a href="/"><h1>Check My Logic</h1></a>
+
 <form id="expression-form" method="get">
-    <input type="text" name="expression" value="{{ expression }}" /><input type="submit" value="Analyze" />
+    <input type="text" name="expression" value="{{ original }}" placeholder='ex: "((a->b)&!b->!a"' /><input type="submit" value="Analyze" />
 </form>
 
-{% if expression %}
 <div id="results">
+
+    {% if expression %}
     <div class="result-block">
         <div class="result-block-title">
             Is It Tautological?
@@ -66,6 +70,12 @@ Check My Logic
             {% endwith %}
         </div>
     </div>
+
+    {% elif error %}
+    <div class="error">
+        {{ error }}
+    </div>
+    {% endif %}
+
 </div>
-{% endif %}
 {% endblock %}
